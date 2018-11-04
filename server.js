@@ -5,6 +5,21 @@
 // Dependencies 
 const express = require('express');
 const bodyParser = require('body-parser');
+const dbConfig = require('./config/db.config');
+const mongoose = require('mongoose');
+
+// Assign library
+mongoose.Promise = global.Promise; 
+
+// Connect to the database
+mongoose.connect(dbConfig.url, {
+    useNewUrlParser: true
+}).then(() =>{
+    console.log({"Success":"Successfully connected to the database."});
+}).catch(err => {
+    console.log({"Error":"Could not connect to the database. With error....",err});
+    process.exit();
+});
 
 // Create express app
 const app = express();
@@ -23,7 +38,8 @@ app.get('/', (request, response) => {
         "Message" : "Welcome to GroceryList application. Organize your shopping and never miss a list."
     });
 });
-
+// Require grocery-list route
+require('./app/routes/grocerylist.route')(app);
 // Listen for request
 app.listen(3000, () => {
     console.log('Server is listing on port 3000');
