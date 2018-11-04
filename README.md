@@ -1,7 +1,7 @@
 # RestFulAPI
 Build a Restful CRUD API for a simple grocery-list application using Node.js, Express and MongoDB.
 
-##Steps to Setup
+## Steps to Setup
 1. Clone the repository 
 2. Install dependencies
     npm install
