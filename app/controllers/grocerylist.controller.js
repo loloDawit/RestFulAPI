@@ -16,6 +16,7 @@ exports.create = (req, res) => {
     // Save the Grocery list in the database
     gList.save().then(data => {
         res.send(data);
+        console.log(data);
     }).catch(err => {
         res.status(500).send({
             message: err.message || "Error occurred while creating the grocery list."
