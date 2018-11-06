@@ -66,7 +66,7 @@ exports.update = (req, res) => {
         });
     }
     // Find gList and update it with the request body
-    GList.findByIdAndUpdate(req.params.gListId, {
+    GList.findOneAndUpdate(req.params.gListId, {
         title: req.body.title || 'Untitled Grocery list.',
         content: req.body.content
     }, {
@@ -93,7 +93,7 @@ exports.update = (req, res) => {
 
 // Delete a grocery-list with the specified listId in the request
 exports.delete = (req, res) => {
-    GList.findByIdAndRemove(req.params.gListId)
+    GList.findOneAndDelete(req.params.gListId)
         .then(data => {
             if (!data) {
                 return res.status(404).send({

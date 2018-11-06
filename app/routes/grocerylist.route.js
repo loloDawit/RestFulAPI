@@ -3,7 +3,7 @@
  */
 
 module.exports = (app) => {
-    const gLists = require('../controllers/list.controller.js');
+    const gLists = require('../controllers/grocerylist.controller');
 
     // Create a new grocery list
     app.post('/groceryLists', gLists.create);
