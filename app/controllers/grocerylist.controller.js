@@ -94,21 +94,23 @@ exports.update = (req, res) => {
 // Delete a grocery-list with the specified listId in the request
 exports.delete = (req, res) => {
     GList.findByIdAndRemove(req.params.gListId)
-    .then(data => {
-        if(!data) {
-            return res.status(404).send({
-                message: "List not found with id " + req.params.gListId
+        .then(data => {
+            if (!data) {
+                return res.status(404).send({
+                    message: "List not found with id " + req.params.gListId
+                });
+            }
+            res.send({
+                message: "Grocery list deleted successfully!"
             });
-        }
-        res.send({message: "Grocery list deleted successfully!"});
-    }).catch(err => {
-        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
-            return res.status(404).send({
-                message: "List not found with id " + req.params.noteId
-            });                
-        }
-        return res.status(500).send({
-            message: "Could not delete note with id " + req.params.noteId
+        }).catch(err => {
+            if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+                return res.status(404).send({
+                    message: "List not found with id " + req.params.noteId
+                });
+            }
+            return res.status(500).send({
+                message: "Could not delete note with id " + req.params.noteId
+            });
         });
-    });
 };
