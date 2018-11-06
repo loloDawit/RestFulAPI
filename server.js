@@ -41,6 +41,7 @@ app.get('/', (request, response) => {
 // Require grocery-list route
 require('./app/routes/grocerylist.route')(app);
 // Listen for request
-app.listen(3000, () => {
+const server = app.listen(3000, () => {
     console.log('Server is listing on port 3000');
 })
+module.exports = server
