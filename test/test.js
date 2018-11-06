@@ -15,7 +15,7 @@ describe('GroceryList', function () {
                 done();
             });
     });
-    it('should list a SINGLE GroceryList on /groceryLists/<id> GET');
+   // it('should list a SINGLE GroceryList on /groceryLists/<id> GET');
     it('should add a SINGLE GroceryList on /groceryLists POST', function (done) {
         chai.request(server)
             .post('/groceryLists')
@@ -35,6 +35,6 @@ describe('GroceryList', function () {
                 done();
             });
     });
-    it('should update a SINGLE GroceryList on /groceryLists/<id> PUT');
-    it('should delete a SINGLE GroceryList on /groceryLists/<id> DELETE');
+    //it('should update a SINGLE GroceryList on /groceryLists/<id> PUT');
+  //  it('should delete a SINGLE GroceryList on /groceryLists/<id> DELETE');
 });
