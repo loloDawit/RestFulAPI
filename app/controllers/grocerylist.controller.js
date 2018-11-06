@@ -1,8 +1,26 @@
-const Note = require('../models/grocerylist.model');
+const GList = require('../models/grocerylist.model');
 
 // Create and Save a new grocery-list
 exports.create = (req, res) => {
-
+    // Validate request body content
+    if(!req.body.content){
+        return res.status(400).send({
+            message:'Grocery list content can not be empty.'
+        });
+    }
+    // Create a new Grocery list
+    const gList = new GList({
+        title: req.body.title || 'Untitled Grocery List',
+        content: req.body.content
+    });
+    // Save the Grocery list in the database
+    gList.save().then(data =>{
+        res.send(data);
+    }).catch(err =>{
+        res.status(500).send({
+            message:err.message || "Error occurred while creating the grocery list."
+        });
+    });
 };
 
 // Retrieve and return all grocery-list from the database.
