@@ -1,8 +1,6 @@
 language: node_js
 node_js:  
-  - "node"
-  - "7"
-  - "4"
+  - "stable"
 services: mongodb
 cache:
   directories:
